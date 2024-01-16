@@ -61,10 +61,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CookieBarServiceProvider"
+                "Weble\\LaravelFilamentCookieBar\\CookieBarServiceProvider"
             ],
             "aliases": {
-                "CookieBar": "CookieBar"
+                "CookieBar": "Weble\\LaravelFilamentCookieBar\\CookieBar"
             }
         }
     },
