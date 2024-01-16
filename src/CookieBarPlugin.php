@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Weble\LaravelFilamentCookieBar;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class CookieBarPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'cookiebar';
     }
 
     public function register(Panel $panel): void

@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Weble\LaravelFilamentCookieBar\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -15,22 +15,15 @@ use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Encryption\Encrypter;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use VendorName\Skeleton\SkeletonServiceProvider;
+use Spatie\GoogleTagManager\GoogleTagManagerServiceProvider;
+use Weble\LaravelFilamentCookieBar\CookieBarServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
-    }
-
     protected function getPackageProviders($app)
     {
         return [
@@ -43,21 +36,24 @@ class TestCase extends Orchestra
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
-            SpatieLaravelSettingsPluginServiceProvider::class,
-            SpatieLaravelTranslatablePluginServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
-            SkeletonServiceProvider::class,
+            GoogleTagManagerServiceProvider::class,
+            CookieBarServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+        config()->set('googletagmanager.id', 'GTM-123456');
+        config()->set('app.key', 'base64:'.base64_encode(
+                Encrypter::generateKey(config('app.cipher'))
+            ));
 
         /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_laravel-filament-cookiebar_table.php.stub';
         $migration->up();
         */
     }
