@@ -10,9 +10,11 @@ use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Weble\LaravelFilamentCookieBar\Livewire\CookieBar;
 use Weble\LaravelFilamentCookieBar\Testing\TestsCookieBar;
 
 class CookieBarServiceProvider extends PackageServiceProvider
@@ -32,10 +34,9 @@ class CookieBarServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
                     ->askToStarRepoOnGitHub('weble/laravel-filament-cookiebar');
             })
+            ->hasTranslations()
             ->hasViewComposer('cookiebar::head', fn (View $view) => $view->with([
                 'consents' => \Weble\LaravelFilamentCookieBar\Facades\GTMConsentManager::currentConsents(),
             ]));
@@ -86,6 +87,8 @@ class CookieBarServiceProvider extends PackageServiceProvider
 
         // Testing
         Testable::mixin(new TestsCookieBar());
+
+        Livewire::component('cookiebar', CookieBar::class);
     }
 
     protected function getAssetPackageName(): ?string

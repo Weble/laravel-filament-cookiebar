@@ -2,15 +2,12 @@
 
 namespace Weble\LaravelFilamentCookieBar\Livewire;
 
-use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
-use Weble\LaravelFilamentCookieBar\GTMConsentManager;
 
 class CookieBar extends Component implements HasActions, HasForms
 {
