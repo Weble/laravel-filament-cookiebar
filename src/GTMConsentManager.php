@@ -22,6 +22,7 @@ class GTMConsentManager
 
     public function saveConsentGroups(array $consents): void
     {
+        $this->savedConsentGroups = $consents;
         Cookie::queue($this->cookieName(), json_encode($consents), $this->cookieLifetime());
     }
 

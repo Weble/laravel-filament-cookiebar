@@ -42,9 +42,9 @@ it('saves consent groups in a cookie', function() {
 it('respects saved consent groups ', function () {
 
     $request = request();
-    $request->cookies->set(GTMConsentManager::cookieName(), json_encode([
+    GTMConsentManager::saveConsentGroups([
         'marketing'
-    ]));
+    ]);
 
     Request::swap($request);
 
@@ -63,9 +63,9 @@ it('respects saved consent groups ', function () {
 it('render current consents', function () {
 
     $request = request();
-    $request->cookies->set(GTMConsentManager::cookieName(), json_encode([
+    GTMConsentManager::saveConsentGroups([
         'marketing'
-    ]));
+    ]);
 
     Request::swap($request);
 
