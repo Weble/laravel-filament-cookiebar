@@ -1,4 +1,7 @@
 <div>
+
+    {{ $slot ?? '' }}
+
     @if($showCookieBar)
         <div class="fixed bottom-0 w-full py-4 shadow-top bg-black text-white z-50">
             <div class="container mx-auto flex flex-col items-center justify-center text-center lg:text-left space-y-4">

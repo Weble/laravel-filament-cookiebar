@@ -15,10 +15,10 @@ trait HasCookieBar
         $this->showCookieBar = GTMConsentManager::isEnabled() && ! GTMConsentManager::savedConsentGroups();
     }
 
-    public function showCookieModalAction(): Action
+    public function showCookieModalAction(?string $label = null): Action
     {
         return Action::make('showCookieModal')
-            ->label(__('cookiebar::cookiebar.banner.manage'))
+            ->label($label ?? __('cookiebar::cookiebar.banner.manage'))
             ->form(
                 GTMConsentManager::consentGroups()
                     ->map(
@@ -51,7 +51,11 @@ trait HasCookieBar
             ->link()
             ->size('xs')
             ->action(function () {
-                $this->saveCookieSettings();
+                $this->saveCookieSettings(
+                    GTMConsentManager::consentGroups()
+                    ->map(fn() => false)
+                    ->all()
+                );
                 $this->showCookieBar = false;
             });
     }
@@ -62,7 +66,10 @@ trait HasCookieBar
             ->label(__('cookiebar::cookiebar.banner.agree'))
             ->color('primary')
             ->action(function () {
-                $this->saveCookieSettings(config('cookiebar.gtag_consents', []));
+                $this->saveCookieSettings(
+                    GTMConsentManager::consentGroups()
+                    ->map(fn() => true)
+                    ->all());
                 $this->showCookieBar = false;
             });
     }

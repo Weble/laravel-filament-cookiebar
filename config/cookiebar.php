@@ -45,7 +45,7 @@ return [
             'description' => 'cookiebar::cookiebar.consents.analytics.description',
             'consents' => [
                 GTMConsent::ANALYTICS_STORAGE,
-                GTMConsent::FUNCTIONALITY_STORAGE,
+                GTMConsent::PERSONALIZATION_STORAGE,
             ],
             'disabled' => false,
             'default' => false,
