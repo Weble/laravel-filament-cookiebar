@@ -31,8 +31,8 @@ return [
      */
     'consent_groups' => [
         'required' => [
-            'title' => 'cookiebar::cookiebar.consents.required.label',
-            'description' => 'cookiebar::cookiebar.consents.required.description',
+            'title' => 'cookiebar::consents.required.label',
+            'description' => 'cookiebar::consents.required.description',
             'consents' => [
                 GTMConsent::SECURITY_STORAGE,
                 GTMConsent::FUNCTIONALITY_STORAGE,
@@ -41,8 +41,8 @@ return [
             'default' => true,
         ],
         'analytics' => [
-            'title' => 'cookiebar::cookiebar.consents.analytics.label',
-            'description' => 'cookiebar::cookiebar.consents.analytics.description',
+            'title' => 'cookiebar::consents.analytics.label',
+            'description' => 'cookiebar::consents.analytics.description',
             'consents' => [
                 GTMConsent::ANALYTICS_STORAGE,
                 GTMConsent::PERSONALIZATION_STORAGE,
@@ -51,8 +51,8 @@ return [
             'default' => false,
         ],
         'marketing' => [
-            'title' => 'cookiebar::cookiebar.consents.marketing.label',
-            'description' => 'cookiebar::cookiebar.consents.marketing.description',
+            'title' => 'cookiebar::consents.marketing.label',
+            'description' => 'cookiebar::consents.marketing.description',
             'consents' => [
                 GTMConsent::AD_STORAGE,
                 GTMConsent::AD_PERSONALIZATION,

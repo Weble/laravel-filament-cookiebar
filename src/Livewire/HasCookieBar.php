@@ -18,7 +18,7 @@ trait HasCookieBar
     public function showCookieModalAction(?string $label = null): Action
     {
         return Action::make('showCookieModal')
-            ->label($label ?? __('cookiebar::cookiebar.banner.manage'))
+            ->label($label ?? __('cookiebar::banner.manage'))
             ->form(
                 GTMConsentManager::consentGroups()
                     ->map(
@@ -37,8 +37,8 @@ trait HasCookieBar
                     ])
                     ->all()
             )
-            ->modalHeading(__('cookiebar::cookiebar.modal.heading'))
-            ->modalDescription(__('cookiebar::cookiebar.modal.description'))
+            ->modalHeading(__('cookiebar::modal.heading'))
+            ->modalDescription(__('cookiebar::modal.description'))
             ->closeModalByClickingAway(false)
             ->modalCloseButton(false)
             ->action(fn (array $data) => $this->saveCookieSettings($data));
@@ -47,7 +47,7 @@ trait HasCookieBar
     public function dismissAction(): Action
     {
         return Action::make('dismiss')
-            ->label(__('cookiebar::cookiebar.banner.dismiss'))
+            ->label(__('cookiebar::banner.dismiss'))
             ->link()
             ->size('xs')
             ->action(function () {
@@ -63,7 +63,7 @@ trait HasCookieBar
     public function agreeAction(): Action
     {
         return Action::make('agree')
-            ->label(__('cookiebar::cookiebar.banner.agree'))
+            ->label(__('cookiebar::banner.agree'))
             ->color('primary')
             ->action(function () {
                 $this->saveCookieSettings(

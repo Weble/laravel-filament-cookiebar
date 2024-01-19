@@ -11,7 +11,7 @@ it('renders a cookiebar', function () {
 
     expect($component->get('showCookieBar'))->toBe(true);
 
-    $component->assertSee(__('cookiebar::cookiebar.banner.message', ['href' => config('cookiebar.terms_url', '#')]));
+    $component->assertSee(__('cookiebar::banner.message', ['href' => config('cookiebar.terms_url', '#')]));
 });
 
 it('opens the modal', function () {
@@ -19,7 +19,7 @@ it('opens the modal', function () {
     $component
         ->mountAction('showCookieModal')
         ->assertFormExists()
-        ->assertSee(__('cookiebar::cookiebar.modal.heading'));
+        ->assertSee(__('cookiebar::modal.heading'));
 });
 
 it('saves the selected consents', function () {
@@ -42,8 +42,7 @@ it('saves the selected consents', function () {
     $storedConsents = json_decode($cookie->getValue(), true);
 
     expect($storedConsents)->toMatchArray([
-        'marketing' => true,
-        'required' => false,
+        'marketing' => 1,
         'analytics' => false,
     ]);
 });
