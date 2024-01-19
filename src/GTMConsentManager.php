@@ -51,9 +51,9 @@ class GTMConsentManager
     public function savedConsents(): array
     {
         return collect($this->savedConsentGroups() ?? [])
-            ->map(fn(string $consentGroup) => $this->consentGroups()->get($consentGroup)['consents'] ?? [])
+            ->map(fn (string $consentGroup) => $this->consentGroups()->get($consentGroup)['consents'] ?? [])
             ->flatten()
-            ->mapWithKeys(fn(GTMConsent $consent) => [$consent->value => 'granted'])
+            ->mapWithKeys(fn (GTMConsent $consent) => [$consent->value => 'granted'])
             ->all();
     }
 

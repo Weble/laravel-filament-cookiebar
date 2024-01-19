@@ -11,9 +11,9 @@ use Livewire\Component;
 
 class CookieBar extends Component implements HasActions, HasForms
 {
+    use HasCookieBar;
     use InteractsWithActions;
     use InteractsWithForms;
-    use HasCookieBar;
 
     public function render(): View
     {

@@ -4,8 +4,6 @@ namespace Weble\LaravelFilamentCookieBar\Livewire;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Toggle;
-use Illuminate\Support\HtmlString;
-use Weble\LaravelFilamentCookieBar\Enums\GTMConsent;
 use Weble\LaravelFilamentCookieBar\Facades\GTMConsentManager;
 
 trait HasCookieBar
@@ -14,7 +12,7 @@ trait HasCookieBar
 
     public function mountHasCookieBar(): void
     {
-        $this->showCookieBar = GTMConsentManager::isEnabled() && !GTMConsentManager::savedConsentGroups();
+        $this->showCookieBar = GTMConsentManager::isEnabled() && ! GTMConsentManager::savedConsentGroups();
     }
 
     public function showCookieModalAction(): Action
@@ -23,18 +21,19 @@ trait HasCookieBar
             ->label(__('cookiebar::cookiebar.banner.manage'))
             ->form(
                 GTMConsentManager::consentGroups()
-                    ->map(fn(array $consentOptions, string $key): Toggle => Toggle::make($key)
-                        ->label(__($consentOptions['title'] ?? $key))
-                        ->helperText(__($consentOptions['description'] ?? null))
-                        ->disabled($consentOptions['disabled'] ?? false)
-                        ->accepted($consentOptions['default'] ?? false)
+                    ->map(
+                        fn (array $consentOptions, string $key): Toggle => Toggle::make($key)
+                            ->label(__($consentOptions['title'] ?? $key))
+                            ->helperText(__($consentOptions['description'] ?? null))
+                            ->disabled($consentOptions['disabled'] ?? false)
+                            ->accepted($consentOptions['default'] ?? false)
                     )
                     ->all()
             )
             ->fillForm(
                 GTMConsentManager::consentGroups()
-                    ->mapWithKeys(fn(array $consentOptions, string $consent): array => [
-                        $consent => $consentOptions['default'] ? 1 : 0
+                    ->mapWithKeys(fn (array $consentOptions, string $consent): array => [
+                        $consent => $consentOptions['default'] ? 1 : 0,
                     ])
                     ->all()
             )
@@ -42,7 +41,7 @@ trait HasCookieBar
             ->modalDescription(__('cookiebar::cookiebar.modal.description'))
             ->closeModalByClickingAway(false)
             ->modalCloseButton(false)
-            ->action(fn(array $data) => $this->saveCookieSettings($data));
+            ->action(fn (array $data) => $this->saveCookieSettings($data));
     }
 
     public function dismissAction(): Action
@@ -72,7 +71,8 @@ trait HasCookieBar
     {
         $jsConsents = json_encode($consents);
 
-        $this->js(<<<JS
+        $this->js(
+            <<<JS
             gtag('consent', 'update', $jsConsents )
         JS
         );

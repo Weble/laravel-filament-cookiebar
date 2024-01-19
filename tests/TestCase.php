@@ -9,12 +9,9 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
-use Filament\SpatieLaravelSettingsPluginServiceProvider;
-use Filament\SpatieLaravelTranslatablePluginServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Encryption\Encrypter;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -48,9 +45,9 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
         config()->set('googletagmanager.id', 'GTM-123456');
-        config()->set('app.key', 'base64:'.base64_encode(
-                Encrypter::generateKey(config('app.cipher'))
-            ));
+        config()->set('app.key', 'base64:' . base64_encode(
+            Encrypter::generateKey(config('app.cipher'))
+        ));
 
         /*
         $migration = include __DIR__.'/../database/migrations/create_laravel-filament-cookiebar_table.php.stub';

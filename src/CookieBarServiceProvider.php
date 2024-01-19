@@ -20,6 +20,7 @@ use Weble\LaravelFilamentCookieBar\Testing\TestsCookieBar;
 class CookieBarServiceProvider extends PackageServiceProvider
 {
     public static string $name = 'cookiebar';
+
     public static string $viewNamespace = 'cookiebar';
 
     public function configurePackage(Package $package): void

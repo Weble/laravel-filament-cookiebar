@@ -17,16 +17,16 @@ return [
     ],
 
     'banner' => [
-        'message'   => "Questo sito si avvale di cookie necessari al suo funzionamento e utili alle finalità illustrate nella <a href=':href' class='underline' target='_blank'>cookie policy</a>.",
-        'agree'     => 'Acconsento',
-        'dismiss'  => 'Usa solo i cookie di sistema',
-        'manage'    => 'Gestisci',
+        'message' => "Questo sito si avvale di cookie necessari al suo funzionamento e utili alle finalità illustrate nella <a href=':href' class='underline' target='_blank'>cookie policy</a>.",
+        'agree' => 'Acconsento',
+        'dismiss' => 'Usa solo i cookie di sistema',
+        'manage' => 'Gestisci',
     ],
 
     'modal' => [
-        'heading'         => 'Impostazioni di tracciamento',
-        'description'   => 'Il seguente pannello ti consente di esprimere le tue preferenze di consenso alle tecnologie di tracciamento che adottiamo per offrire le funzionalità e svolgere le attività sotto descritte.',
-        'cancel'        => 'Annulla',
-        'save'          => 'Salva e continua',
-    ]
+        'heading' => 'Impostazioni di tracciamento',
+        'description' => 'Il seguente pannello ti consente di esprimere le tue preferenze di consenso alle tecnologie di tracciamento che adottiamo per offrire le funzionalità e svolgere le attività sotto descritte.',
+        'cancel' => 'Annulla',
+        'save' => 'Salva e continua',
+    ],
 ];

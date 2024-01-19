@@ -23,7 +23,7 @@ it('groups consents', function () {
         ->toHaveCount(3);
 });
 
-it('saves consent groups in a cookie', function() {
+it('saves consent groups in a cookie', function () {
     $cookieJar = new CookieJar();
     Cookie::swap($cookieJar);
 
@@ -43,7 +43,7 @@ it('respects saved consent groups ', function () {
 
     $request = request();
     GTMConsentManager::saveConsentGroups([
-        'marketing'
+        'marketing',
     ]);
 
     Request::swap($request);
@@ -64,7 +64,7 @@ it('render current consents', function () {
 
     $request = request();
     GTMConsentManager::saveConsentGroups([
-        'marketing'
+        'marketing',
     ]);
 
     Request::swap($request);
@@ -82,5 +82,3 @@ it('render current consents', function () {
     expect(view('cookiebar::head')->render())
         ->toContain("gtag('consent', 'default', {$json}");
 });
-
-

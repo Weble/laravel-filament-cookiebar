@@ -3,9 +3,7 @@
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Livewire;
-use Weble\LaravelFilamentCookieBar\Facades\GTMConsentManager;
 use Weble\LaravelFilamentCookieBar\Livewire\CookieBar;
-use function Livewire\store;
 
 it('renders a cookiebar', function () {
     $component = Livewire::test(CookieBar::class)
@@ -33,7 +31,7 @@ it('saves the selected consents', function () {
     $component
         ->mountAction('showCookieModal')
         ->callAction('showCookieModal', [
-            'marketing' => 1
+            'marketing' => 1,
         ]);
 
     $component->assertHasNoActionErrors();
@@ -46,8 +44,6 @@ it('saves the selected consents', function () {
     expect($storedConsents)->toMatchArray([
         'marketing' => true,
         'required' => false,
-        'analytics' => false
+        'analytics' => false,
     ]);
 });
-
-
