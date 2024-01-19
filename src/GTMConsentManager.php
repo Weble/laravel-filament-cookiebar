@@ -66,14 +66,4 @@ class GTMConsentManager
     {
         return collect(config('cookiebar.consent_groups', []));
     }
-
-    public function forcedConsentGroups(): Collection
-    {
-        return $this->consentGroups()->where('force', true);
-    }
-
-    public function isConsentGroupForced(string $consent): bool
-    {
-        return $this->forcedConsentGroups()->contains($consent);
-    }
 }

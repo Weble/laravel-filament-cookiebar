@@ -31,29 +31,35 @@ return [
      */
     'consent_groups' => [
         'required' => [
-            'title' => 'cookiebar.consents.required.label',
-            'description' => 'cookiebar.consents.required.description',
+            'title' => 'cookiebar::cookiebar.consents.required.label',
+            'description' => 'cookiebar::cookiebar.consents.required.description',
             'consents' => [
                 GTMConsent::SECURITY_STORAGE,
                 GTMConsent::FUNCTIONALITY_STORAGE,
             ],
+            'disabled' => true,
+            'default' => true,
         ],
         'analytics' => [
-            'title' => 'cookiebar.consents.analytics.label',
-            'description' => 'cookiebar.consents.analytics.description',
+            'title' => 'cookiebar::cookiebar.consents.analytics.label',
+            'description' => 'cookiebar::cookiebar.consents.analytics.description',
             'consents' => [
                 GTMConsent::ANALYTICS_STORAGE,
                 GTMConsent::FUNCTIONALITY_STORAGE,
             ],
+            'disabled' => false,
+            'default' => false,
         ],
         'marketing' => [
-            'title' => 'cookiebar.consents.marketing.label',
-            'description' => 'cookiebar.consents.marketing.description',
+            'title' => 'cookiebar::cookiebar.consents.marketing.label',
+            'description' => 'cookiebar::cookiebar.consents.marketing.description',
             'consents' => [
                 GTMConsent::AD_STORAGE,
                 GTMConsent::AD_PERSONALIZATION,
                 GTMConsent::AD_USER_DATA,
             ],
+            'disabled' => false,
+            'default' => false,
         ],
     ],
 ];

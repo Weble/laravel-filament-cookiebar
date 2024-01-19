@@ -4,6 +4,7 @@ namespace Weble\LaravelFilamentCookieBar\Livewire;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Toggle;
+use Illuminate\Support\HtmlString;
 use Weble\LaravelFilamentCookieBar\Enums\GTMConsent;
 use Weble\LaravelFilamentCookieBar\Facades\GTMConsentManager;
 
@@ -23,17 +24,17 @@ trait HasCookieBar
             ->form(
                 GTMConsentManager::consentGroups()
                     ->map(fn(array $consentOptions, string $key): Toggle => Toggle::make($key)
-                        ->label(__($consentOptions['label'] ?? $key))
+                        ->label(__($consentOptions['title'] ?? $key))
                         ->helperText(__($consentOptions['description'] ?? null))
-                        ->disabled(GTMConsentManager::isConsentGroupForced($key))
-                        ->accepted(GTMConsentManager::isConsentGroupForced($key))
+                        ->disabled($consentOptions['disabled'] ?? false)
+                        ->accepted($consentOptions['default'] ?? false)
                     )
                     ->all()
             )
             ->fillForm(
-                GTMConsentManager::forcedConsentGroups()
-                    ->mapWithKeys(fn(string $consent): array => [
-                        $consent => 1
+                GTMConsentManager::consentGroups()
+                    ->mapWithKeys(fn(array $consentOptions, string $consent): array => [
+                        $consent => $consentOptions['default'] ? 1 : 0
                     ])
                     ->all()
             )
