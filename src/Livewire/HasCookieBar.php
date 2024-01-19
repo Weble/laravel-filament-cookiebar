@@ -53,8 +53,8 @@ trait HasCookieBar
             ->action(function () {
                 $this->saveCookieSettings(
                     GTMConsentManager::consentGroups()
-                    ->map(fn() => false)
-                    ->all()
+                        ->map(fn () => false)
+                        ->all()
                 );
                 $this->showCookieBar = false;
             });
@@ -68,8 +68,9 @@ trait HasCookieBar
             ->action(function () {
                 $this->saveCookieSettings(
                     GTMConsentManager::consentGroups()
-                    ->map(fn() => true)
-                    ->all());
+                        ->map(fn () => true)
+                        ->all()
+                );
                 $this->showCookieBar = false;
             });
     }
